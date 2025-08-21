@@ -55,7 +55,7 @@ struct EditBookView: View {
                 }
                 if status == .completed {
                     LabeledContent {
-                        DatePicker("", selection: $dateStarted,in:dateStarted..., displayedComponents: .date)
+                        DatePicker("", selection: $dateCompleted,in:dateStarted..., displayedComponents: .date)
                     } label: {
                         Text("Date Completed")
                     }
