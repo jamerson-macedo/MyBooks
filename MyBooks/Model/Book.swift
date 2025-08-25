@@ -20,6 +20,9 @@ class Book {
     var rating : Int?
     var status : Status.RawValue
     var recommendedBy : String = ""
+    // ao apagar o livro o quote tb é apagado
+    @Relationship(deleteRule: .cascade)
+    var quotes:[Quote]?
     init(
         title: String,
         author: String,
