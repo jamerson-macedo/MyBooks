@@ -10,7 +10,7 @@ import SwiftData
 @main
 struct MyBooksApp: App {
     let container : ModelContainer
-    // MARK - QUANDO O PREVIEW FALHAR É SO APAGAR A CACHE DELE
+    // MARK - QUANDO O PREVIEW FALHAR É SO APAGAR A CACHE DELE xcrun simctl --set previews delete all
     var body: some Scene {
         WindowGroup {
             BookListView()

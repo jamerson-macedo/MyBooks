@@ -49,7 +49,10 @@ struct BookListView: View {
 
 #Preview {
     let preview = Preview(Book.self)
-    preview.addExamples(Book.sampleBooks)
+    let books = Book.sampleBooks
+    let genres = Genre.sampleGenres
+    preview.addExamples(books)
+    preview.addExamples(genres)
   return BookListView().modelContainer(preview.container)
 }
 
@@ -69,6 +72,15 @@ struct BookRow: View {
                                 .foregroundStyle(.yellow)
                         }
                     }
+                }
+                if let genres = book.genres{
+                    ViewThatFits { // se nao couber ele cria o scroll
+                        GenreStackView(genres: genres)
+                        ScrollView(.horizontal,showsIndicators: false){
+                            GenreStackView(genres: genres)
+                        }
+                    }
+              
                 }
             }
         }

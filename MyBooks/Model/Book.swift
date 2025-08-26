@@ -23,6 +23,8 @@ class Book {
     // ao apagar o livro o quote tb é apagado
     @Relationship(deleteRule: .cascade)
     var quotes:[Quote]?
+    @Relationship(inverse: \Genre.books)
+    var genres: [Genre]?
     init(
         title: String,
         author: String,

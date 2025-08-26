@@ -20,6 +20,7 @@ struct EditBookView: View {
     @State private var dateCompleted = Date.distantPast
     @State private var firstView = true
     @State private var recommendedBy = ""
+    @State private var showGenres : Bool = false
     var changed : Bool{
         status != Status(rawValue:book.status)!
        || rating != book.rating
@@ -128,15 +129,30 @@ struct EditBookView: View {
             TextEditor(text: $synopsis)
                 .padding(5)
                 .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color(uiColor: .tertiarySystemFill),lineWidth: 2))
-            NavigationLink{
-                QuotesListView(book: book)
-            } label: {
-                let count = book.quotes?.count ?? 0
-                Label("\(count) Quotes", systemImage: "quote.opening")
+            if let genres = book.genres{
+                ViewThatFits { // se nao couber ele cria o scroll
+                    GenreStackView(genres: genres)
+                    ScrollView(.horizontal,showsIndicators: false){
+                        GenreStackView(genres: genres)
+                    }
+                }
             }
-            .buttonStyle(.bordered)
-            .frame(maxWidth:.infinity,alignment:.trailing)
-            .padding(.horizontal)
+            HStack {
+                Button("Genres",systemImage: "bookmark.fill"){
+                    showGenres.toggle()
+                }.sheet(isPresented: $showGenres) {
+                    GenresView(book: book)
+                }
+                NavigationLink{
+                    QuotesListView(book: book)
+                } label: {
+                    let count = book.quotes?.count ?? 0
+                    Label("\(count) Quotes", systemImage: "quote.opening")
+                }
+               
+            } .buttonStyle(.bordered)
+                .frame(maxWidth:.infinity,alignment:.trailing)
+                .padding(.horizontal)
         }
         .padding()
         .textFieldStyle(.roundedBorder)
