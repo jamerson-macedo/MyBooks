@@ -61,7 +61,7 @@ class Book {
 enum Status : Int,Codable, Identifiable,CaseIterable{
     case onShelf, inProgress, completed
     var id : Self {self}
-    var description : String{
+    var description : LocalizedStringResource{
         switch self {
         case .onShelf:
             return "On Shelf"

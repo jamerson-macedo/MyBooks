@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		CF2B82312E60F93600709B48 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CF2B82302E60F93600709B48 /* Localizable.xcstrings */; };
+		CF2B828B2E610A2500709B48 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF2B828A2E610A2500709B48 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CF2B82302E60F93600709B48 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		CF2B828A2E610A2500709B48 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		CFA3FA582E57BA7F00DAEDF9 /* MyBooks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBooks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -37,6 +39,7 @@
 		CFA3FA4F2E57BA7F00DAEDF9 = {
 			isa = PBXGroup;
 			children = (
+				CF2B828A2E610A2500709B48 /* Launch Screen.storyboard */,
 				CF2B82302E60F93600709B48 /* Localizable.xcstrings */,
 				CFA3FA5A2E57BA7F00DAEDF9 /* MyBooks */,
 				CFA3FA592E57BA7F00DAEDF9 /* Products */,
@@ -97,6 +100,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = CFA3FA4F2E57BA7F00DAEDF9;
 			minimizedProjectReferenceProxies = 1;
@@ -115,6 +119,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF2B828B2E610A2500709B48 /* Launch Screen.storyboard in Resources */,
 				CF2B82312E60F93600709B48 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

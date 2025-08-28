@@ -7,13 +7,24 @@
 
 import SwiftUI
 import SwiftData
-enum SortOrder : String, CaseIterable, Identifiable {
+// string resource ja faz a conversao dos enums
+enum SortOrder : LocalizedStringResource, CaseIterable, Identifiable {
     case title
     case author
     case status
     
     var id: Self {
         self
+    }
+    var description : LocalizedStringResource{
+        switch self {
+        case .title:
+            return "Title"
+        case .author:
+            return "Author"
+        case .status:
+            return "Status"
+        }
     }
 }
 struct BookListView: View {
@@ -25,7 +36,7 @@ struct BookListView: View {
         NavigationStack{
             Picker("", selection: $sortOrder) {
                 ForEach(SortOrder.allCases){ sortOrder in
-                    Text("Sort by \(sortOrder)").tag(sortOrder)
+                    Text("Sort by \(sortOrder.description)").tag(sortOrder)
                 }
             }.buttonStyle(.bordered)
             BookList(sortOrder: sortOrder, filterString: filter)
@@ -47,13 +58,25 @@ struct BookListView: View {
     }
 }
 
-#Preview {
+#Preview("Ingles") {
     let preview = Preview(Book.self)
     let books = Book.sampleBooks
     let genres = Genre.sampleGenres
     preview.addExamples(books)
     preview.addExamples(genres)
-  return BookListView().modelContainer(preview.container)
+  return BookListView()
+        .modelContainer(preview.container)
+        .environment(\.locale,Locale(identifier: "EN-US"))
+}
+#Preview("Portugues") {
+    let preview = Preview(Book.self)
+    let books = Book.sampleBooks
+    let genres = Genre.sampleGenres
+    preview.addExamples(books)
+    preview.addExamples(genres)
+  return BookListView()
+        .modelContainer(preview.container)
+        .environment(\.locale,Locale(identifier: "PT-BR"))
 }
 
 struct BookRow: View {
